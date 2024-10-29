@@ -6,7 +6,7 @@
 /*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:49:17 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/29 14:48:00 by cde-sous         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:33:40 by cde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	find_end_for_create_new_node(t_stack **begin_list, t_stack *node)
 		tmp->next = node;
 	}
 }
+
 t_stack	*create_node(int value)
 {
 	t_stack	*node;
@@ -37,6 +38,7 @@ t_stack	*create_node(int value)
 	node->next = NULL;
 	return (node);
 }
+
 void	change_to_i(char *number, t_stack **begin_list)
 {
 	int	number_i;
@@ -47,6 +49,7 @@ void	change_to_i(char *number, t_stack **begin_list)
 	find_end_for_create_new_node(begin_list, create_node(number_i));
 	// create_node(number_i);
 }
+
 void	arg_parse(char *argv[], t_stack **begin_list)
 {
 	int		i;
@@ -62,11 +65,14 @@ void	arg_parse(char *argv[], t_stack **begin_list)
 		while (number[j])
 		{
 			change_to_i(number[j], begin_list);
+			free(number[j]);
 			j++;
 		}
+		free(number);
 		i++;
 	}
 }
+
 int	main(int argc, char *argv[])
 {
 	t_stacks	all_stack;
