@@ -6,12 +6,11 @@
 /*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 19:15:11 by carzhang          #+#    #+#             */
-/*   Updated: 2024/10/29 16:01:49 by cde-sous         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:29:08 by cde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
 int	ft_atoi(const char *nptr)
 {
@@ -33,11 +32,9 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	while (nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = (result * 10) + (nptr[i] - '0');
-		i++;
-	}
-	if ((result > INT_MIN && sign == -1) || (result > INT_MAX && sign == 1))
+		result = (result * 10) + (nptr[i++] - '0');
+	if ((result > (long)2147483648 && sign == -1) || (result > 2147483647
+			&& sign == 1) || nptr[i])
 		return (0);
 	return (result * sign);
 }

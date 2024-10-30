@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   f_all_type_op.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 10:48:56 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/30 15:40:22 by cde-sous         ###   ########.fr       */
+/*   Created: 2024/10/30 15:34:29 by cde-sous          #+#    #+#             */
+/*   Updated: 2024/10/30 17:06:06 by cde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "Libft/libft.h"
-
-typedef struct s_stack
+void	f_swap(t_stack *a_b)
 {
-	struct s_stack	*next;
-	int				data;
-}					t_stack;
+	t_stack	*head;
+	t_stack	*second;
 
-typedef struct s_stacks
-{
-	t_stack			*a;
-	t_stack			*b;
-}					t_stacks;
-
-void				ft_all_clean(t_stacks *stacks, int index, char **number);
-void				call_all_algo(t_stacks *all_stack);
-void				f_swap(t_stack *a_b);
-
-#endif
+	if (!a_b || !a_b->next)
+		return ;
+	head = a_b;
+	second = a_b->next;
+	a_b = second;
+	head->next = second->next;
+	second->next = head;
+	/* head = a_b;
+	ft_printf("     head: %d", head->data);
+	while (head)
+	{
+		ft_printf(" %d\n", head->data);
+		head = head->next;
+	} */
+}

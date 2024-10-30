@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   f_call_all_algo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 10:48:56 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/30 15:40:22 by cde-sous         ###   ########.fr       */
+/*   Created: 2024/10/30 15:02:45 by cde-sous          #+#    #+#             */
+/*   Updated: 2024/10/30 17:04:45 by cde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "Libft/libft.h"
-
-typedef struct s_stack
+int	check_sort(t_stack *a)
 {
-	struct s_stack	*next;
-	int				data;
-}					t_stack;
+	t_stack	*tmp;
 
-typedef struct s_stacks
+	tmp = a;
+	while (tmp && tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+void	call_all_algo(t_stacks *all_stack)
 {
-	t_stack			*a;
-	t_stack			*b;
-}					t_stacks;
-
-void				ft_all_clean(t_stacks *stacks, int index, char **number);
-void				call_all_algo(t_stacks *all_stack);
-void				f_swap(t_stack *a_b);
-
-#endif
+	if (check_sort(all_stack->a))
+	{
+		return ;
+	}
+	f_swap(all_stack->a);
+}

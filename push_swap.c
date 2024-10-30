@@ -6,7 +6,7 @@
 /*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:49:17 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/29 16:33:40 by cde-sous         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:03:05 by cde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,33 @@ t_stack	*create_node(int value)
 	t_stack	*node;
 
 	node = malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
 	node->data = value;
 	node->next = NULL;
 	return (node);
 }
 
-void	change_to_i(char *number, t_stack **begin_list)
+int	change_to_i(char *number, t_stack **begin_list)
 {
-	int	number_i;
+	int		number_i;
+	t_stack	*tmp;
 
-	// int	i;
 	number_i = ft_atoi(number);
-	// ft_printf("%d\n", number_i);
+	if (number_i == 0 && number[0] != '0')
+		return (0);
+	tmp = *begin_list;
+	while (tmp)
+	{
+		if (number_i == tmp->data)
+			return (0);
+		tmp = tmp->next;
+	}
 	find_end_for_create_new_node(begin_list, create_node(number_i));
-	// create_node(number_i);
+	return (1);
 }
 
-void	arg_parse(char *argv[], t_stack **begin_list)
+void	arg_parse(char *argv[], t_stacks *all_stacks)
 {
 	int		i;
 	int		j;
@@ -61,10 +71,16 @@ void	arg_parse(char *argv[], t_stack **begin_list)
 	while (argv[i])
 	{
 		number = ft_split(argv[i], ' ');
+		if (!*number)
+			ft_all_clean(all_stacks, 0, number);
 		j = 0;
 		while (number[j])
 		{
-			change_to_i(number[j], begin_list);
+			if (!change_to_i(number[j], &all_stacks->a))
+			{
+				free(number[j]);
+				ft_all_clean(all_stacks, 0, number);
+			}
 			free(number[j]);
 			j++;
 		}
@@ -85,21 +101,19 @@ int	main(int argc, char *argv[])
 	}
 	all_stack.a = NULL;
 	all_stack.b = NULL;
-	arg_parse(argv, &all_stack.a);
+	arg_parse(argv, &all_stack);
 	tmp = all_stack.a;
 	while (tmp)
 	{
 		ft_printf("%d\n", tmp->data);
 		tmp = tmp->next;
 	}
-	// int i;
-	// i = 1;
+	call_all_algo(&all_stack);
+	ft_all_clean(&all_stack, 1, NULL);
 	return (0);
 }
 
-// args -> "1 2 3 4" "5 6"
-// split chaque argv[i] return char **numbers -> "1", "2", "3", "4"
-// int number => numbers[i] = "1", atoi pour le mettre dans le int
-// creer le node
-// mettre dans la liste chainee
-// free a chaque boucle numbers
+// algo simple:
+/// 3 nombres
+/// 4 ou 5 nombres
+// algo radix

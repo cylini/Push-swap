@@ -6,7 +6,7 @@
 #    By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 10:47:46 by cde-sous          #+#    #+#              #
-#    Updated: 2024/10/29 11:09:24 by cde-sous         ###   ########.fr        #
+#    Updated: 2024/10/30 15:40:44 by cde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ INCLUDE = push_swap.h
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = push_swap.c
+SRCS = push_swap.c f_clean.c f_call_all_algo.c f_all_type_op.c
 
 OBJS_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
