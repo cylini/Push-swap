@@ -6,7 +6,7 @@
 /*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:48:56 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/30 15:40:22 by cde-sous         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:56:45 by cde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct s_stacks
 
 void				ft_all_clean(t_stacks *stacks, int index, char **number);
 void				call_all_algo(t_stacks *all_stack);
-void				f_swap(t_stack *a_b);
+void				f_swap(t_stack **a_b);
+void				f_rotate(t_stack **a_b);
+void				f_rev_rotate(t_stack **a_b);
+void				f_push(t_stack **first, t_stack **second);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:49:17 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/30 18:03:05 by cde-sous         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:35:17 by cde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,7 @@ void	arg_parse(char *argv[], t_stacks *all_stacks)
 		while (number[j])
 		{
 			if (!change_to_i(number[j], &all_stacks->a))
-			{
-				free(number[j]);
 				ft_all_clean(all_stacks, 0, number);
-			}
 			free(number[j]);
 			j++;
 		}
@@ -112,8 +109,3 @@ int	main(int argc, char *argv[])
 	ft_all_clean(&all_stack, 1, NULL);
 	return (0);
 }
-
-// algo simple:
-/// 3 nombres
-/// 4 ou 5 nombres
-// algo radix
