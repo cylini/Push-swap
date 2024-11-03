@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:49:17 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/31 15:35:17 by cde-sous         ###   ########.fr       */
+/*   Updated: 2024/11/02 15:41:08 by cylini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	find_end_for_create_new_node(t_stack **begin_list, t_stack *node)
 	else
 	{
 		while (tmp && tmp->next)
-		{
 			tmp = tmp->next;
-		}
 		tmp->next = node;
 	}
 }

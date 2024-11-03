@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_call_all_algo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:02:45 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/31 15:34:16 by cde-sous         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:28:33 by cylini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,5 @@ void	call_all_algo(t_stacks *all_stack)
 	else if (stack_size(all_stack->a) == 4 || stack_size(all_stack->a) == 5)
 		sort_4_and_5_numbers(&all_stack->a, &all_stack->b);
 	else
-		;
-	// radix;
+		radix_sort(all_stack);
 }
