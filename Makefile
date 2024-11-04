@@ -6,7 +6,7 @@
 #    By: cylini <cylini@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 15:41:50 by carzhang          #+#    #+#              #
-#    Updated: 2024/11/02 16:29:35 by cylini           ###   ########.fr        #
+#    Updated: 2024/11/04 16:30:03 by cylini           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME) : $(OBJS) $(INCLUDE)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT) :
-	$(MAKE) -C $(LIBFT_DIR) CFLAGS="-Wall -Wextra -Werror -fPIE"
+	$(MAKE) -C $(LIBFT_DIR) CFLAGS="-Wall -Wextra -Werror"
 
 $(OBJS_DIR)/%.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@

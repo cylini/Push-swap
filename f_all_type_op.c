@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   f_all_type_op.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cde-sous <cde-sous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:34:29 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/10/31 15:33:09 by cde-sous         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:31:34 by cylini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	f_swap(t_stack **a_b)
+void	f_swap(t_stack **a_b, char id)
 {
 	t_stack	*head;
 	t_stack	*second;
@@ -24,9 +24,10 @@ void	f_swap(t_stack **a_b)
 	*a_b = second;
 	head->next = second->next;
 	second->next = head;
+	ft_printf("s%c\n", id);
 }
 
-void	f_rev_rotate(t_stack **a_b)
+void	f_rev_rotate(t_stack **a_b, char id)
 {
 	t_stack	*head;
 	t_stack	*new_tail;
@@ -43,9 +44,10 @@ void	f_rev_rotate(t_stack **a_b)
 	head->next = *a_b;
 	*a_b = head;
 	new_tail->next = NULL;
+	ft_printf("rr%c\n", id);
 }
 
-void	f_rotate(t_stack **a_b)
+void	f_rotate(t_stack **a_b, char id)
 {
 	t_stack	*head;
 	t_stack	*new_tail;
@@ -59,9 +61,10 @@ void	f_rotate(t_stack **a_b)
 	new_tail->next = *a_b;
 	new_tail->next->next = NULL;
 	*a_b = head;
+	ft_printf("r%c\n", id);
 }
 
-void	f_push(t_stack **first, t_stack **second)
+void	f_push(t_stack **first, t_stack **second, char id)
 {
 	t_stack	*head;
 
@@ -71,4 +74,5 @@ void	f_push(t_stack **first, t_stack **second)
 	*first = head->next;
 	head->next = *second;
 	*second = head;
+	ft_printf("p%c\n", id);
 }

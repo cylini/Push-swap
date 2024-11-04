@@ -6,7 +6,7 @@
 /*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:49:17 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/02 15:41:08 by cylini           ###   ########.fr       */
+/*   Updated: 2024/11/04 16:37:01 by cylini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,12 @@ void	arg_parse(char *argv[], t_stacks *all_stacks)
 int	main(int argc, char *argv[])
 {
 	t_stacks	all_stack;
-	t_stack		*tmp;
 
 	if (!(argc >= 2))
-	{
-		ft_printf("a\n");
 		return (0);
-	}
 	all_stack.a = NULL;
 	all_stack.b = NULL;
 	arg_parse(argv, &all_stack);
-	tmp = all_stack.a;
-	while (tmp)
-	{
-		ft_printf("%d\n", tmp->data);
-		tmp = tmp->next;
-	}
 	call_all_algo(&all_stack);
 	ft_all_clean(&all_stack, 1, NULL);
 	return (0);

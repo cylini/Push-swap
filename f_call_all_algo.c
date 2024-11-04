@@ -6,7 +6,7 @@
 /*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:02:45 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/02 16:28:33 by cylini           ###   ########.fr       */
+/*   Updated: 2024/11/04 16:31:36 by cylini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ void	sort_3_numbers(t_stack **a)
 	three = (*a)->next->next->data;
 	if (one < two && two > three && three > one)
 	{
-		f_rev_rotate(a);
-		f_swap(a);
+		f_rev_rotate(a, 'a');
+		f_swap(a, 'a');
 	}
 	else if (one > two && two < three && three > one)
-		f_swap(a);
+		f_swap(a, 'a');
 	else if (one < two && two > three && three < one)
-		f_rev_rotate(a);
+		f_rev_rotate(a, 'a');
 	else if (one > two && two < three && three < one)
-		f_rotate(a);
+		f_rotate(a, 'a');
 	else if (one > two && two > three && three < one)
 	{
-		f_rotate(a);
-		f_swap(a);
+		f_rotate(a, 'a');
+		f_swap(a, 'a');
 	}
 }
 
@@ -88,12 +88,12 @@ void	sort_4_and_5_numbers(t_stack **a, t_stack **b)
 			tmp = tmp->next;
 		}
 		while (*a != smaller_number)
-			f_rotate(a);
-		f_push(a, b);
+			f_rotate(a, 'a');
+		f_push(a, b, 'b');
 	}
 	sort_3_numbers(a);
 	while (stack_size(*b) != 0)
-		f_push(b, a);
+		f_push(b, a, 'a');
 }
 
 void	call_all_algo(t_stacks *all_stack)
@@ -101,7 +101,7 @@ void	call_all_algo(t_stacks *all_stack)
 	if (check_sort(all_stack->a))
 		return ;
 	if (stack_size(all_stack->a) == 2)
-		f_swap(&all_stack->a);
+		f_swap(&all_stack->a, 'a');
 	else if (stack_size(all_stack->a) == 3)
 		sort_3_numbers(&all_stack->a);
 	else if (stack_size(all_stack->a) == 4 || stack_size(all_stack->a) == 5)

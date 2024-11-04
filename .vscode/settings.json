@@ -1,5 +1,10 @@
 {
 	"files.associations": {
 		"random": "c"
-	}
+	},
+	  "[c]": {
+        "editor.defaultFormatter": "keyhr.42-c-format"
+	},
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "keyhr.42-c-format",
 }
