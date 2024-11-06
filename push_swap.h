@@ -6,7 +6,7 @@
 /*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:48:56 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/04 16:31:43 by cylini           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:05:38 by cylini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void				f_rev_rotate(t_stack **a_b, char id);
 void				f_push(t_stack **first, t_stack **second, char id);
 void				radix_sort(t_stacks *all_stack);
 int					stack_size(t_stack *a);
-void				push_between_a_b(t_stack **a, t_stack **b, int total_bit,
-						int current_bit);
+void				push_rotate_between_a_b(t_stack **a, t_stack **b,
+						int total_bit, int current_bit);
 int					check_sort(t_stack *a);
 
 #endif

@@ -6,25 +6,11 @@
 /*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:02:45 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/04 16:31:36 by cylini           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:05:34 by cylini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	check_sort(t_stack *a)
-{
-	t_stack	*tmp;
-
-	tmp = a;
-	while (tmp && tmp->next)
-	{
-		if (tmp->data > tmp->next->data)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
 
 void	sort_3_numbers(t_stack **a)
 {
@@ -96,6 +82,30 @@ void	sort_4_and_5_numbers(t_stack **a, t_stack **b)
 		f_push(b, a, 'a');
 }
 
+void	sort_6_and_7_numbers(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+	t_stack	*smallest;
+
+	while (stack_size(*a) > 4)
+	{
+		tmp = *a;
+		smallest = *a;
+		while (tmp)
+		{
+			if (tmp->data < smallest->data)
+				smallest = tmp;
+			tmp = tmp->next;
+		}
+		while (*a != smallest)
+			f_rotate(a, 'a');
+		f_push(a, b, 'b');
+	}
+	sort_4_and_5_numbers(a, b);
+	while (stack_size(*b) > 0)
+		f_push(b, a, 'a');
+}
+
 void	call_all_algo(t_stacks *all_stack)
 {
 	if (check_sort(all_stack->a))
@@ -106,6 +116,8 @@ void	call_all_algo(t_stacks *all_stack)
 		sort_3_numbers(&all_stack->a);
 	else if (stack_size(all_stack->a) == 4 || stack_size(all_stack->a) == 5)
 		sort_4_and_5_numbers(&all_stack->a, &all_stack->b);
+	else if (stack_size(all_stack->a) == 6 || stack_size(all_stack->a) == 7)
+		sort_6_and_7_numbers(&all_stack->a, &all_stack->b);
 	else
 		radix_sort(all_stack);
 }

@@ -6,7 +6,7 @@
 /*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:12:51 by cylini            #+#    #+#             */
-/*   Updated: 2024/11/04 16:31:58 by cylini           ###   ########.fr       */
+/*   Updated: 2024/11/06 18:05:35 by cylini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ int	index_the_numbers(t_stack *a)
 	return (index_max);
 }
 
+int	check_sort(t_stack *a)
+{
+	t_stack	*tmp;
+
+	tmp = a;
+	while (tmp && tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 int	check_reverse_sort(t_stack *b)
 {
 	t_stack	*tmp;
@@ -53,7 +67,7 @@ int	check_reverse_sort(t_stack *b)
 	return (1);
 }
 
-void	push_between_a_b(t_stack **a, t_stack **b, int total_bit,
+void	push_rotate_between_a_b(t_stack **a, t_stack **b, int total_bit,
 		int current_bit)
 {
 	int	size;
@@ -95,7 +109,8 @@ void	radix_sort(t_stacks *all_stack)
 	current_bit = 0;
 	while (current_bit < total_bit)
 	{
-		push_between_a_b(&all_stack->a, &all_stack->b, total_bit, current_bit);
+		push_rotate_between_a_b(&all_stack->a, &all_stack->b, total_bit,
+			current_bit);
 		current_bit++;
 	}
 	while (stack_size(all_stack->b) > 0)
