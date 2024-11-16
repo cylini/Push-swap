@@ -3,15 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   f_call_all_algo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
+/*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:02:45 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/06 18:05:34 by cylini           ###   ########.fr       */
+/*   Updated: 2024/11/16 20:38:14 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	find_position(t_stack *stack, t_stack *target)
+{
+	int	pos;
+
+	pos = 0;
+	while (stack && stack != target)
+	{
+		pos++;
+		stack = stack->next;
+	}
+	return (pos);
+}
+
+// void	move_to_top(t_stack **stack, t_stack *target, char id)
+// {
+// 	int	pos;
+// 	int	size;
+
+// 	pos = find_position(*stack, target);
+// 	size = stack_size(*stack);
+// 	if (pos <= size / 2)
+// 		while (*stack != target)
+// 			f_rotate(stack, id);
+// 	else
+// 		while (*stack != target)
+// 			f_rev_rotate(stack, id);
+// }
+
+int	stack_size(t_stack *a)
+{
+	t_stack	*tmp;
+	int		i;
+
+	if (!a)
+		return (0);
+	i = 0;
+	tmp = a;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
 void	sort_3_numbers(t_stack **a)
 {
 	int	one;
@@ -41,27 +85,11 @@ void	sort_3_numbers(t_stack **a)
 	}
 }
 
-int	stack_size(t_stack *a)
-{
-	t_stack	*tmp;
-	int		i;
-
-	if (!a)
-		return (0);
-	i = 0;
-	tmp = a;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
 void	sort_4_and_5_numbers(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 	t_stack	*smaller_number;
+	int		pos;
 
 	while (stack_size(*a) > 3)
 	{
@@ -73,8 +101,15 @@ void	sort_4_and_5_numbers(t_stack **a, t_stack **b)
 				smaller_number = tmp;
 			tmp = tmp->next;
 		}
-		while (*a != smaller_number)
-			f_rotate(a, 'a');
+		if ((pos = find_position(*a, smaller_number)) <= stack_size(*a) / 2)
+			while (*a != smaller_number)
+				f_rotate(a, 'a');
+		else
+			while (*a != smaller_number)
+				f_rev_rotate(a, 'a');
+		// // while (*a != smaller_number)
+		// // 	f_rotate(a, 'a');
+		// move_to_top(a, smaller_number, 'a');
 		f_push(a, b, 'b');
 	}
 	sort_3_numbers(a);

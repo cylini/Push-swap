@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cylini <cylini@student.42.fr>              +#+  +:+       +#+        */
+/*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:49:17 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/06 18:05:27 by cylini           ###   ########.fr       */
+/*   Updated: 2024/11/16 19:42:19 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	change_to_i(char *number, t_stack **begin_list)
 	int		number_i;
 	t_stack	*tmp;
 
+	if (ft_strlen(number) >= 12)
+		return (0);
 	number_i = ft_atoi(number);
 	if (number_i == 0 && number[0] != '0')
 		return (0);
