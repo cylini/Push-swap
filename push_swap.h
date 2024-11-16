@@ -6,7 +6,7 @@
 /*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:48:56 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/16 17:47:45 by carzhang         ###   ########.fr       */
+/*   Updated: 2024/11/16 21:16:38 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int					stack_size(t_stack *a);
 void				push_rotate_between_a_b(t_stack **a, t_stack **b,
 						int total_bit, int current_bit);
 int					check_sort(t_stack *a);
+int					find_position(t_stack *stack, t_stack *target);
 
 #endif
