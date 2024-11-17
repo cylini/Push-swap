@@ -6,13 +6,11 @@
 /*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:34:29 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/16 19:55:29 by carzhang         ###   ########.fr       */
+/*   Updated: 2024/11/17 16:12:17 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		instruction_count = 0;
 
 void	f_swap(t_stack **a_b, char id)
 {
@@ -27,8 +25,6 @@ void	f_swap(t_stack **a_b, char id)
 	head->next = second->next;
 	second->next = head;
 	ft_printf("s%c\n", id);
-	instruction_count++;
-	// ft_printf("Total instructions executed: %d\n", instruction_count);
 }
 
 void	f_rev_rotate(t_stack **a_b, char id)
@@ -49,8 +45,6 @@ void	f_rev_rotate(t_stack **a_b, char id)
 	*a_b = head;
 	new_tail->next = NULL;
 	ft_printf("rr%c\n", id);
-	instruction_count++;
-	// ft_printf("Total instructions executed: %d\n", instruction_count);
 }
 
 void	f_rotate(t_stack **a_b, char id)
@@ -68,8 +62,6 @@ void	f_rotate(t_stack **a_b, char id)
 	new_tail->next->next = NULL;
 	*a_b = head;
 	ft_printf("r%c\n", id);
-	instruction_count++;
-	// ft_printf("Total instructions executed: %d\n", instruction_count);
 }
 
 void	f_push(t_stack **first, t_stack **second, char id)
@@ -83,6 +75,4 @@ void	f_push(t_stack **first, t_stack **second, char id)
 	head->next = *second;
 	*second = head;
 	ft_printf("p%c\n", id);
-	instruction_count++;
-	// ft_printf("Total instructions executed: %d\n", instruction_count);
 }

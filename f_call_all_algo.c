@@ -6,7 +6,7 @@
 /*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:02:45 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/16 21:22:53 by carzhang         ###   ########.fr       */
+/*   Updated: 2024/11/17 15:57:14 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	stack_size(t_stack *a)
 	}
 	return (i);
 }
+
 void	sort_3_numbers(t_stack **a)
 {
 	int	one;
@@ -61,7 +62,6 @@ void	sort_4_and_5_numbers(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 	t_stack	*smaller_number;
-	int		pos;
 
 	while (stack_size(*a) > 3)
 	{
@@ -73,12 +73,7 @@ void	sort_4_and_5_numbers(t_stack **a, t_stack **b)
 				smaller_number = tmp;
 			tmp = tmp->next;
 		}
-		if ((pos = find_position(*a, smaller_number)) <= stack_size(*a) / 2)
-			while (*a != smaller_number)
-				f_rotate(a, 'a');
-		else
-			while (*a != smaller_number)
-				f_rev_rotate(a, 'a');
+		move_to_top(&(*a), smaller_number, 'a');
 		f_push(a, b, 'b');
 	}
 	sort_3_numbers(a);

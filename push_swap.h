@@ -6,7 +6,7 @@
 /*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:48:56 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/16 21:16:38 by carzhang         ###   ########.fr       */
+/*   Updated: 2024/11/17 16:16:07 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,27 @@ typedef struct s_stacks
 	t_stack			*b;
 }					t_stacks;
 
+// f_clean.c
 void				ft_all_clean(t_stacks *stacks, int index, char **number);
+
+// f_call_all_algo.c
 void				call_all_algo(t_stacks *all_stack);
+int					stack_size(t_stack *a);
+
+// f_all_type_op.c
 void				f_swap(t_stack **a_b, char id);
 void				f_rotate(t_stack **a_b, char id);
 void				f_rev_rotate(t_stack **a_b, char id);
 void				f_push(t_stack **first, t_stack **second, char id);
-void				radix_sort(t_stacks *all_stack);
-int					stack_size(t_stack *a);
+
+// radix.c
+int					check_sort(t_stack *a);
 void				push_rotate_between_a_b(t_stack **a, t_stack **b,
 						int total_bit, int current_bit);
-int					check_sort(t_stack *a);
+void				radix_sort(t_stacks *all_stack);
+
+// f_utils.c
 int					find_position(t_stack *stack, t_stack *target);
+void				move_to_top(t_stack **a, t_stack *smaller_number, char id);
 
 #endif
