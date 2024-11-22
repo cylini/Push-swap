@@ -6,7 +6,7 @@
 /*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:48:56 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/17 16:16:07 by carzhang         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:54:59 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct s_stacks
 }					t_stacks;
 
 // f_clean.c
-void				ft_all_clean(t_stacks *stacks, int index, char **number);
+void				ft_all_clean(t_stacks *stacks, int index, char ***number);
+void				free_number(char ***number);
 
 // f_call_all_algo.c
 void				call_all_algo(t_stacks *all_stack);

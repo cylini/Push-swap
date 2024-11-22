@@ -6,30 +6,30 @@
 /*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:39:18 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/17 15:40:20 by carzhang         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:44:32 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_number(char **number)
+void	free_number(char ***number)
 {
 	int	i;
 
-	if (number)
+	if (number && *number)
 	{
 		i = -1;
-		while (number[++i])
+		while ((*number)[++i])
 		{
-			free(number[i]);
-			number[i] = NULL;
+			free((*number)[i]);
+			(*number)[i] = NULL;
 		}
-		free(number);
-		number = NULL;
+		free((*number));
+		*number = NULL;
 	}
 }
 
-void	ft_all_clean(t_stacks *stacks, int index, char **number)
+void	ft_all_clean(t_stacks *stacks, int index, char ***number)
 {
 	t_stack	*tmp;
 
