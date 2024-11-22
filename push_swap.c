@@ -6,7 +6,7 @@
 /*   By: carzhang <carzhang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:49:17 by cde-sous          #+#    #+#             */
-/*   Updated: 2024/11/17 15:39:26 by carzhang         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:31:58 by carzhang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	change_to_i(char *number, t_stack **begin_list)
 	int		number_i;
 	t_stack	*tmp;
 
-	if (ft_strlen(number) >= 12)
-		return (0);
 	number_i = ft_atoi(number);
-	if (number_i == 0 && number[0] != '0')
+	if (number_i == 0 && !(ft_strncmp(number, "0", ft_strlen(number)) == 0
+			|| ft_strncmp(number, "+0", ft_strlen(number)) == 0
+			|| ft_strncmp(number, "-0", ft_strlen(number)) == 0))
 		return (0);
 	tmp = *begin_list;
 	while (tmp)
@@ -72,16 +72,15 @@ void	arg_parse(char *argv[], t_stacks *all_stacks)
 	{
 		number = ft_split(argv[i], ' ');
 		if (!*number)
-			ft_all_clean(all_stacks, 0, number);
+			ft_all_clean(all_stacks, 0, &number);
 		j = 0;
 		while (number[j])
 		{
 			if (!change_to_i(number[j], &all_stacks->a))
-				ft_all_clean(all_stacks, 0, number);
-			free(number[j]);
+				ft_all_clean(all_stacks, 0, &number);
 			j++;
 		}
-		free(number);
+		free_number(&number);
 		i++;
 	}
 }
